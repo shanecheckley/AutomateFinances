@@ -77,6 +77,7 @@ class Transaction:
     def get_category():
         return category
     
+    # change this later to better represent a repr function
     def __repr__(self):
         return """{}
         {}
