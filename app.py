@@ -13,10 +13,37 @@ Please choose one if these options:
 Your selection:
 """
 
+# main menu
 def menu():
     connection = database.connect()
     database.create_tables(connection)
-    
-    #look up ":=", does this mean: should be equal to?
+    get_input(connection)
+
+
+# ***HELPER FUNCTIONS***
+
+def get_input(connection):   
+    # ":=" gives a new variable (left side) a value (right side) within a statement
     while (user_input := input(MENU_PROMPT)) != "5":
-        print(user_input)
+        if user_input == "1":
+            date = input("Enter date: ")
+            description = input("Enter description: ")
+            transaction_type = input("Enter transaction type (withdrawal, deposit, transfer): ")
+            # casting input to int... look into this more
+            amount = int(input("Enter amount: "))
+            debit_or_credit = input("Debit or credit?: ")
+            purchase_method = input("Enter purchase method: ")
+            category = input("Enter category: ")
+
+            database.add_transaction(connection, date, description, transaction_type, amount, debit_or_credit, purchase_method, category)
+        elif user_input == "2":
+            transactions = database.get_all_transactions(connection)
+
+            for transaction in transactions:
+                print(transaction)
+        elif user_input == "3":
+            pass
+        elif user_input == "4":
+            pass
+        else:
+            print("****Invalid input, please try again!*****")

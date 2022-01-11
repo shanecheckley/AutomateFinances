@@ -1,8 +1,8 @@
 import sqlite3
 
 # SQL Queries
-CREATE_TRANSACTION_TABLE = "CREATE TABLE IF NOT EXISTS transactions (id INTEGER PRIMARY KEY, date DATE, description TEXT, transaction_type TEXT, amount INTEGER, debit_or_credit TEXT, purchase_method TEXT, category TEXT);"
-INSERT_TRANSACTION = "INSERT INTO transactions (date, description, transaction_type, amount, debit_or_credit, purchase_method, category) VALUES (?, ?, ?);"
+CREATE_TRANSACTION_TABLE = "CREATE TABLE IF NOT EXISTS transactions (id INTEGER PRIMARY KEY, date TEXT, description TEXT, transaction_type TEXT, amount INTEGER, debit_or_credit TEXT, purchase_method TEXT, category TEXT);"
+INSERT_TRANSACTION = "INSERT INTO transactions (date, description, transaction_type, amount, debit_or_credit, purchase_method, category) VALUES (?, ?, ?, ?, ?, ?, ?);"
 GET_ALL_TRANSACTIONS = "SELECT * FROM transactions;"
 GET_TRANSACTIONS_BY_DESCRIPTION = "SELECT * FROM transactions WHERE description = ?;"
 GET_CATEGORY_TOTAL = """
@@ -23,6 +23,9 @@ def add_transaction(connection, date, description, transaction_type, amount, deb
     with connection:
         # execution that requires values: values must be tuples
         connection.execute(INSERT_TRANSACTION, (date, description, transaction_type, amount, debit_or_credit, purchase_method, category))
+
+def check_if_added(connection):
+    pass
 
 def get_all_transactions(connection):
     with connection:
