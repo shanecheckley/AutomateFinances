@@ -1,5 +1,4 @@
 from transaction import Transaction
+import app
 
-first = Transaction("date", "description", "type", "amount")
-
-print(first)
+app.menu()

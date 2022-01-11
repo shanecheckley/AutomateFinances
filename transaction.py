@@ -1,23 +1,5 @@
-class Transaction:
-    # Contrstuctor for all transactions that are not purchases (without category)
-    def __init__(self, date, description, transaction_type, amount):
-        self.date = date
-        self.description = description
-        self.transaction_type = transaction_type
-        self.amount = amount
-        category = none
-    
-    # Constructor for purchase transactions (without category)
-    def __init__(self, date, description, transaction_type, amount, debit_or_credit, purchase_method):
-        self.date = date
-        self.description = description
-        self.transaction_type = transaction_type
-        self.amount = amount
-        self.debit_or_credit = debit_or_credit
-        self.purchase_method = purchase_method
-        category = none
-    
-    # Contrstuctor for all transactions that are not purchases
+class Transaction:    
+    # Contrstuctor for deposit transactions
     def __init__(self, date, description, transaction_type, amount, category):
         self.date = date
         self.description = description
@@ -26,7 +8,7 @@ class Transaction:
         self.category = category
     
     # Constructor for purchase transactions
-    def __init__(self, date, description, transaction_type, amount, debit_or_credit ,purchase_method, category):
+    def __init__(self, date, description, transaction_type, amount, debit_or_credit, purchase_method, category):
         self.date = date
         self.description = description
         self.transaction_type = transaction_type
